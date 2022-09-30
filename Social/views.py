@@ -24,7 +24,8 @@ def homeView(request):
             )
     articles = articles[0:20]
     numberOfArticles = articles.count()
-    context = {"topics":topics,"articles":articles,"NoArticle":numberOfArticles}
+    allArticle = Article.objects.all().count()
+    context = {"topics":topics,"articles":articles,"NoArticle":numberOfArticles,"allArticle":allArticle}
     return render(request,'Social/index.html',context)
 
 def loginView(request):
@@ -112,8 +113,8 @@ def detailsView(request,pk):
     except:
         like = False
         dislike = False
-
-    context = {"like":like,"dislike":dislike,"article":article,"topics":topics,'comments':comments,"noComments":noComments,"NoArticle":numberOfArticles}
+    allArticle = Article.objects.all().count()
+    context = {"allArticle":allArticle,"like":like,"dislike":dislike,"article":article,"topics":topics,'comments':comments,"noComments":noComments,"NoArticle":numberOfArticles}
     return render(request,'Social/details.html',context)
 
 @login_required(login_url='/login')
@@ -223,7 +224,8 @@ def profile(request):
         if form.is_valid():
             form.save()
             return redirect('profile')
-    context = {"topics":topics,"NoArticle":numberOfArticles,"user":user,"form":form}
+    allArticle = Article.objects.all().count()
+    context = {"allArticle":allArticle,"topics":topics,"NoArticle":numberOfArticles,"user":user,"form":form}
     return render(request,'Social/profile.html',context)
 
 

@@ -23,14 +23,14 @@
         <hr>
         <div class="d-flex">
             {%if like%}
-            <a href="{%url 'like' article.id%}" class="btn" style="color:blue"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like</a>
+            <a href="{%url 'like' article.id%}" class="btn" style="color:blue"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like ({{article.noLike}})</a>
             {%else%}
-            <a href="{%url 'like' article.id%}" class="btn"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like</a>
+            <a href="{%url 'like' article.id%}" class="btn"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like ({{article.noLike}})</a>
             {%endif%}
             {%if dislike%}
-            <a href="{%url 'dislike' article.id%}" class="btn" style="color:red"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike</a>
+            <a href="{%url 'dislike' article.id%}" class="btn" style="color:red"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike ({{article.noDislike}})</a>
             {%else%}
-            <a href="{%url 'dislike' article.id%}" class="btn"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike</a>
+            <a href="{%url 'dislike' article.id%}" class="btn"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike ({{article.noDislike}})</a>
             {%endif%}
         </div>
         <div>
