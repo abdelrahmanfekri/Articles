@@ -15,5 +15,6 @@ urlpatterns = [
     path('deleteComment/<str:pk>/',deleteComment,name='deleteComment'),
     path('like/<str:pk>/',like,name='like'),
     path('dislike/<str:pk>/',dislike,name='dislike'),
-    path('profile/',profile,name='profile')
+    path('profile/',profile,name='profile'),
+    path('addComment/<str:pk>',addComment,name='addComment')
 ]

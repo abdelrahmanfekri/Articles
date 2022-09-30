@@ -100,10 +100,6 @@ def createArticle(request):
 
 def detailsView(request,pk):
     article = Article.objects.get(id = int(pk))
-    if request.method == 'POST':
-        content = request.POST.get('comment')
-        Comment.objects.create(Content=content,Owner=request.user,Article=article)
-        return redirect('details',pk=int(pk))
     topics = Topic.objects.all()
     comments = Comment.objects.filter(Article=article)
     noComments = comments.count()
@@ -119,6 +115,14 @@ def detailsView(request,pk):
 
     context = {"like":like,"dislike":dislike,"article":article,"topics":topics,'comments':comments,"noComments":noComments,"NoArticle":numberOfArticles}
     return render(request,'Social/details.html',context)
+
+@login_required(login_url='/login')
+def addComment(request,pk):
+    article = Article.objects.get(id = int(pk))
+    if request.method == 'POST':
+        content = request.POST.get('comment')
+        Comment.objects.create(Content=content,Owner=request.user,Article=article)
+        return redirect('details',pk=int(pk))
 
 @login_required(login_url='/login')
 def deleteArticle(request,pk):
