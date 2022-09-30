@@ -1,1 +1,1 @@
-web: gunicorn VirtualClinic.wsgi
+web: gunicorn Article.wsgi
