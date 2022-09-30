@@ -1,1 +1,1 @@
-web: gunicorn Article.wsgi
+web: gunicorn Articles.wsgi
