@@ -39,7 +39,7 @@ Django backend project that allow user to write and publish articles so other co
     1- clone the repo to your local machine.
     2- run "py manage.py runserver" in CMD.
     
-  # some screens of the app.
+  # some screens from the app.
     
   ![Screenshot 2022-10-01 003039](https://user-images.githubusercontent.com/84510558/193364976-207cffd1-36d8-4f13-be42-0909da635946.png)
   
