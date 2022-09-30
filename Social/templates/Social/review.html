@@ -3,7 +3,7 @@
     <div class="bg-secondary shadow border rounded p-2 mt-3">
         <div class="d-flex align-items-center justify-content-between">
             <div>
-                <img src="{%static 'images/avatar.svg'%}" style="height:5vh;width:5vh;">
+                <img class="rounded rounded-circle" src="{%static article.Owner.Avatar.url%}" style="height:5vh;width:5vh;">
                 <span class="m-2 text-white">{{article.Owner.username}}</span>
             </div>
             <div>
@@ -50,7 +50,7 @@
         <div class="w-100 bg-secondary shadow border rounded p-2 mt-3 h-auto">
             <div class="d-flex align-items-center justify-content-between">
                 <div>
-                    <img src="{%static 'images/avatar.svg'%}" style="height:5vh;width:5vh;">
+                    <img class="rounded rounded-circle" src="{%static i.Owner.Avatar.url%}" style="height:5vh;width:5vh;">
                     <span class="m-2 text-white">{{i.Owner.username}}</span>
                 </div>
                 <div>
