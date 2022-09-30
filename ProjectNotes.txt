@@ -1,0 +1,32 @@
+models:
+   - User(Email,FirstName,LastName,Avatar,Password)
+   1-Doctor(
+      User,Summary,NationalIDImageFront,
+      NationalIDImageBack,Specialization,OfficeHours,Ratings,Ranking
+      )
+   2-Patient(User)
+   3-Topic (Name)
+   4-Article(Owner,Topic,Content)
+   5-Comment(Owner,Article,Content)
+   6-Action(Name,User,Article)    # like or dislike
+   7-Contact(Doctor,Patient)
+   8-ContactMessages(Contact,Content,Created)
+
+views:
+   1- index() take request and return html index   
+
+forms:
+   1-Doctor
+   2-Patient
+   3-User
+   4-Topic
+   5-Article
+   6-Comment
+   7-Contact
+   8-ContactMessages
+
+
+
+
+
+

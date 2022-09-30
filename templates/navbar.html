@@ -1,0 +1,34 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-primary shadow">
+  <div class="container-fluid mw-75" style="width:1000px">
+    <a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}" class="rounded-circle mx-3" alt="logo"
+        style="width:5vh;height:5vh;"></a>
+    <a class="navbar-brand text-bold" href="{% url 'home' %}">Articles</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form method="GET" action="{% url 'home'%}" class="d-flex mw-75 m-auto mt-2" role="search">
+        <input name="q" class="form-control me-2" type="search" placeholder="Search for articles" aria-label="Search">
+        <button class="btn btn-outline-dark text-white" type="submit">Search</button>
+      </form>
+      {% if request.user.is_authenticated %}
+      <div class="nav-item dropdown mt-2">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img class="rounded rounded-circle" src="{%static request.user.Avatar.url%}"  class="" style="width:5vh;height:5vh;" alt="user avatar">
+          <span>Hi {{request.user.username}}</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
+          <li><a class="dropdown-item" href="{% url 'profile' %}">profile</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="nav-item">
+        <a href="{% url 'login' %}" class="btn btn-primary">login</a>
+      </div>
+      {%endif%}
+    </div>
+  </div>
+</nav>

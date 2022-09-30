@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<div class="mw-100 mh-75 p-2 m-md-auto mt-2 mt-md-5" style="width:500px;height:500px">
+    <form method="Post" class="form-control d-flex flex-column align-items-center">
+        {% csrf_token%}
+        <div class="form-outline w-100">
+            <label class="form-label" for="room_topic">Enter your article topic</label>
+            <input class="form-control mt-2 w-50" required type="text" value="{{article.Topic.Name}}" name="topicName"
+                list="topic-list" />
+            <datalist id="topic-list">
+                <select id="article_topic">
+                    {% for topic in topics %}
+                    <option value="{{topic.Name}}">{{topic.Name}}</option>
+                    {% endfor %}
+                </select>
+            </datalist>
+        </div>
+        <div class="form-outline w-100">
+            <label class="form-label" for="article-content">Content</label>
+            <textarea rows="10" class="w-100 form-control p-4" id="article-content" value="{{article.Content}}" name="Content">{{article.Content}}</textarea>
+        </div>
+        <input type="submit" class="ms-auto btn btn-primary my-5" value="{{value}}">
+    </form>
+</div>
+{% endblock %}

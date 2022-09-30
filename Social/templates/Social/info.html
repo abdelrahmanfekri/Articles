@@ -1,0 +1,26 @@
+{% load static %}
+<div class="m-1 m-md-4 mw-100" style="width: 1100px;">
+    <form method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+        <div>
+            <img class="rounded rounded-circle" src="{%static request.user.Avatar.url%}" class=""
+                style="width:15vh;height:15vh;" alt="user avatar">
+        </div>
+        <h6>Avatar</h6>
+        <div class="mt-2 form-outline w-100 d-flex align-items-center">
+            <label class="form-label me-3" for="id_Avatar">Change</label>
+            <input type="file" name="Avatar" accept="image/*" id="id_Avatar" class="form-control">
+        </div>
+        <div class="mt-2 form-outline w-100 align-items-center">
+            <label class="form-label" for="id_username">Username:</label>
+            <input class="form-control" type="text" name="username" value="{{request.user.username}}" maxlength="50"
+                required="" id="id_username">
+        </div>
+        <div class="mt-2 form-outline w-100 align-items-center">
+            <label class="form-label" for="id_email">Email:</label>
+            <input class="form-control" type="email" name="email" value="{{request.user.email}}" maxlength="254"
+                required="" id="id_email">
+        </div>
+        <input type="submit" class="btn btn-lg btn-primary mt-4" value="Update">
+    </form>
+</div>

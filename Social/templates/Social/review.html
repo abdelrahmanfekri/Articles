@@ -1,0 +1,71 @@
+{% load static %}
+<div class="m-1 m-md-4 mw-100" style="width: 1100px;">
+    <div class="bg-secondary shadow border rounded p-2 mt-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <img src="{%static 'images/avatar.svg'%}" style="height:5vh;width:5vh;">
+                <span class="m-2 text-white">{{article.Owner.username}}</span>
+            </div>
+            <div>
+                <span class="text-white">{{article.created_at|timesince}} ago</span>
+                {%if article.Owner == request.user%}
+                <a class="btn btn-info p-1 m-0" href="{% url 'updateArticle' article.id%}">Update</a>
+                <a class="btn btn-danger p-1 m-0" href="{% url 'deleteArticle' article.id%}"><i class="fa fa-trash"></i></a>
+                {%endif%}
+            </div>
+        </div>
+        <hr>
+        <div class="m-1 m-md-4">
+            <p class="text-break text-white">
+                {{article.Content}}
+            </p>
+        </div>
+        <hr>
+        <div class="d-flex">
+            {%if like%}
+            <a href="{%url 'like' article.id%}" class="btn" style="color:blue"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like</a>
+            {%else%}
+            <a href="{%url 'like' article.id%}" class="btn"><i class="fa fa-thumbs-up fa-lg m-2" aria-hidden="true"></i>like</a>
+            {%endif%}
+            {%if dislike%}
+            <a href="{%url 'dislike' article.id%}" class="btn" style="color:red"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike</a>
+            {%else%}
+            <a href="{%url 'dislike' article.id%}" class="btn"><i class="fa fa-thumbs-down fa-lg m-2" aria-hidden="true"></i>dislike</a>
+            {%endif%}
+        </div>
+        <div>
+            <form method="POST">
+                {%csrf_token%}
+                <div class="d-flex">
+                    <textarea name="comment" maxlength="200" required class="form-control m-2" rows="2"
+                        placeholder="add a comment"></textarea>
+                    <input class="btn btn-primary m-2" type="submit" value="Comment">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <h6 class="text-white mt-4">Comments <span class="me-3 text-white">({{noComments}})</span></h6>
+        {% for i in comments%}
+        <div class="w-100 bg-secondary shadow border rounded p-2 mt-3 h-auto">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <img src="{%static 'images/avatar.svg'%}" style="height:5vh;width:5vh;">
+                    <span class="m-2 text-white">{{i.Owner.username}}</span>
+                </div>
+                <div>
+                    <span class="text-white">{{i.created|timesince}} ago</span>
+                    {%if i.Owner == request.user%}
+                    <a class="btn btn-danger p-1 m-0" href="{% url 'deleteComment' i.id%}"><i
+                            class="fa fa-trash"></i></a>
+                    {%endif%}
+                </div>
+            </div>
+            <hr>
+            <div class="text-white">
+                <p class="text-break">{{i.Content}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

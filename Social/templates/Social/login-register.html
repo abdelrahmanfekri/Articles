@@ -1,0 +1,66 @@
+{% extends 'main.html'%}
+
+{% block content %}
+{% if login %}
+<form method="Post" class="d-flex flex-column bg-white p-4 shadow border border-4 m-auto align-items-center mt-5"
+    style="width: 300px;">
+    {% csrf_token %}
+    <div>
+        <h4>LOGIN</h4>
+    </div>
+    {% if message %}
+    <div>
+        <small class="text-danger">{{message}}</small>
+    </div>
+    {% endif %}
+    <!-- Email input -->
+    <div class="form-outline w-100 mb-4">
+        <label class="form-label" for="form2Example1">Email address</label>
+        <input name="email" type="email" id="form2Example1" class="form-control" />
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4 w-100">
+        <label class="form-label" for="form2Example2">Password</label>
+        <input name="password" type="password" id="form2Example2" class="form-control" />
+    </div>
+    <p>Not a member? <a href="{%url 'register'%}">Register</a></p>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4 mx-auto">Sign in</button>
+</form>
+{% else %}
+<form method="Post" class="d-flex flex-column bg-white p-4 shadow border border-4 m-auto align-items-center mt-5"
+    style="width: 300px;">
+    {% csrf_token %}
+    <div>
+        <h4>Register</h4>
+    </div>
+    {% if message %}
+    <div>
+        <small class="text-danger">{{message}}</small>
+    </div>
+    {% endif %}
+    <div class="form-outline w-100">
+        <label class="form-label" for="id_username">Username:</label>
+        <input name="username" type="text" id="id_username" maxlength="50" required class="form-control" />
+    </div>
+    <div class="form-outline w-100">
+        <label class="form-label" for="id_email">Email:</label>
+        <input name="email" type="email" id="id_email" maxlength="254" required class="form-control" />
+    </div>
+    <div class="form-outline w-100">
+        <label class="form-label" for="id_password">password</label>
+        <input name="password" type="password" id="id_password" maxlength="128" required class="form-control" />
+    </div>
+    <div class="form-outline w-100">
+        <label class="form-label" for="form3Example4cd">Repeat your password</label>
+        <input name="password2" type="password" id="form3Example4cd" class="form-control" />
+    </div>
+    <div>
+        <h6>already have account <a href="{% url 'login'%}">login</a></h6>
+    </div>
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+    </div>
+</form>
+{% endif%}
+{% endblock %}

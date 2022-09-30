@@ -1,0 +1,28 @@
+<div class="mw-75 mb-3 m-0" style="width:300px">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="True" aria-controls="collapseExample">
+        Browser Topics
+    </button>
+    <div class="collapse show" id="collapseExample">
+        <div class="d-flex justify-content-between align-items-center my-2">
+            <div>
+                <a href="{% url 'home' %}"><span>All</span></a>
+            </div>
+            <div>
+                <span class="bg-secondary rounded-circle me-3 p-2 text-white">{{NoArticle}}</span>
+            </div>
+        </div>
+        <hr>
+        {% for i in topics %}
+        <div class="d-flex justify-content-between align-items-center my-3">
+            <a href="{% url 'home'%}?topic={{i.Name}}">
+                <span>{{i.Name}}</span>
+            </a>
+            <div>
+                <span class="bg-secondary rounded-circle me-3 p-2 text-white">{{i.NoArticles}}</span>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
