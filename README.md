@@ -38,4 +38,16 @@ Django backend project that allow user to write and publish articles so other co
   # run on local machine:
     1- clone the repo to your local machine.
     2- run "py manage.py runserver" in CMD.
+    
+  # some screens of the app.
+    
+  ![Screenshot 2022-10-01 003039](https://user-images.githubusercontent.com/84510558/193364976-207cffd1-36d8-4f13-be42-0909da635946.png)
   
+  ![Screenshot 2022-10-01 003135](https://user-images.githubusercontent.com/84510558/193365148-c8d363e8-2276-4a1c-887f-76dab39f3466.png)
+
+  ![Screenshot 2022-10-01 003209](https://user-images.githubusercontent.com/84510558/193365164-bee19381-b2a8-4715-a5b8-db4613aa0bd6.png)
+  
+  ![Screenshot 2022-10-01 003234](https://user-images.githubusercontent.com/84510558/193365183-08d1c938-0697-4d0d-8cb0-88967d69a036.png)
+
+  ![Screenshot 2022-10-01 003256](https://user-images.githubusercontent.com/84510558/193365190-1325ed1b-50dd-4787-bcab-cd9d9a33c72e.png)
+
